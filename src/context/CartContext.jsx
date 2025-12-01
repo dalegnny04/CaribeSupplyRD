@@ -5,9 +5,9 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // ============================
-  //        ADD TO CART
-  // ============================
+
+  //        Agregar al carrito
+  
   const addToCart = (product) => {
     const uniqueKey = `${product.id}-${product.variantId}`;
 
@@ -36,16 +36,15 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // ============================
-  //     REMOVE FROM CART
-  // ============================
+ 
+  //     remover del carrito
+  
   const removeFromCart = (key) => {
     setCart(cart.filter((item) => item.key !== key));
   };
 
-  // ============================
-  //     INCREASE QUANTITY
-  // ============================
+  //     Incrementar la cantidad de articulos
+  
   const increase = (key) => {
     setCart(
       cart.map((item) =>
@@ -58,9 +57,8 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  // ============================
-  //     DECREASE QUANTITY
-  // ============================
+  //     Decreser la cantidad de articulos
+  
   const decrease = (key) => {
     setCart(
       cart.map((item) =>
@@ -71,9 +69,9 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  // ============================
+  
   //         TOTAL
-  // ============================
+  
   const total = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
